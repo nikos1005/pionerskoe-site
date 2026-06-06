@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nikos1005.github.io/pionerskoe-site/sitemap.xml
