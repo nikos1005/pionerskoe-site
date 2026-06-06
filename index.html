@@ -769,6 +769,226 @@
             display: block;
         }
 
+        /* ========== ПЛАВАЮЩАЯ КНОПКА ЗВОНКА (мобильные) ========== */
+        .sticky-call {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            padding: 12px 16px;
+            padding-bottom: max(12px, env(safe-area-inset-bottom));
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+            gap: 10px;
+            align-items: center;
+        }
+        .sticky-call .price-tag {
+            color: var(--accent);
+            font-weight: 800;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .sticky-call .call-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--accent);
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        .sticky-call .call-btn:hover {
+            background: var(--accent-hover);
+            transform: scale(1.02);
+        }
+        .sticky-call .messenger-btn {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            font-size: 1.3rem;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+        .sticky-call .wa-btn { background: #25D366; color: #fff; }
+        .sticky-call .wa-btn:hover { background: #1da851; transform: scale(1.05); }
+        .sticky-call .tg-btn { background: #0088cc; color: #fff; }
+        .sticky-call .tg-btn:hover { background: #0077b5; transform: scale(1.05); }
+        @media (max-width: 768px) {
+            .sticky-call { display: flex; }
+            body { padding-bottom: 80px; }
+        }
+
+        /* ========== КНОПКИ МЕССЕНДЖЕРОВ ========== */
+        .messenger-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+        .messenger-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            color: #fff;
+        }
+        .messenger-link.wa { background: #25D366; }
+        .messenger-link.wa:hover { background: #1da851; transform: translateY(-2px); }
+        .messenger-link.tg { background: #0088cc; }
+        .messenger-link.tg:hover { background: #0077b5; transform: translateY(-2px); }
+        .messenger-link.viber { background: #7360f2; }
+        .messenger-link.viber:hover { background: #5d4ed8; transform: translateY(-2px); }
+
+        /* ========== КНОПКИ ПОДЕЛИТЬСЯ ========== */
+        .share-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            color: #fff;
+            cursor: pointer;
+            border: none;
+        }
+        .share-btn.wa-share { background: #25D366; }
+        .share-btn.tg-share { background: #0088cc; }
+        .share-btn.copy-share {
+            background: var(--text-light);
+            color: #fff;
+        }
+        .share-btn.copy-share:hover { background: var(--text); transform: translateY(-2px); }
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* ========== ПОДПИСИ К ФОТО ========== */
+        .gallery-item-wrapper {
+            position: relative;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            background: var(--bg-alt);
+        }
+        .gallery-item-wrapper .gallery-item {
+            border-radius: 0;
+        }
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 12px 16px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 500;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .gallery-item-wrapper:hover .gallery-caption {
+            opacity: 1;
+        }
+        @media (hover: none) {
+            .gallery-caption { opacity: 1; background: linear-gradient(transparent 30%, rgba(0,0,0,0.7)); }
+        }
+
+        /* ========== АНИМИРОВАННЫЕ СЧЁТЧИКИ ========== */
+        .counter-num {
+            display: inline-block;
+        }
+
+        /* ========== ПАРАЛЛАКС ========== */
+        .parallax-section {
+            position: relative;
+            overflow: hidden;
+        }
+        .parallax-section .parallax-bg {
+            position: absolute;
+            inset: -20% 0;
+            opacity: 0.04;
+            background: radial-gradient(ellipse at 50% 50%, var(--accent) 0%, transparent 70%);
+            transform: translateY(0);
+            transition: transform 0.1s linear;
+            will-change: transform;
+            pointer-events: none;
+        }
+
+        /* ========== ВИЗУАЛИЗАЦИЯ ПЛАНА ПОМЕЩЕНИЯ ========== */
+        .floorplan-viz {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 12px;
+            max-width: 500px;
+            margin: 24px auto 0;
+        }
+        .floorplan-viz .room {
+            padding: 20px 16px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .floorplan-viz .room.main {
+            background: linear-gradient(135deg, rgba(232,168,56,0.2), rgba(232,168,56,0.05));
+            border: 2px solid var(--accent);
+            color: var(--primary);
+        }
+        .floorplan-viz .room.secondary {
+            background: rgba(26,58,92,0.05);
+            border: 2px dashed var(--primary-light);
+            color: var(--text);
+        }
+        .floorplan-viz .room .room-size {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-top: 4px;
+        }
+        .floorplan-viz .room.main .room-size { color: var(--accent); }
+
+        /* ========== СЧЁТЧИК ПРОСМОТРОВ ========== */
+        .view-counter {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            padding: 6px 14px;
+            border-radius: 50px;
+            background: rgba(232,168,56,0.08);
+            border: 1px solid rgba(232,168,56,0.15);
+            margin-top: 10px;
+        }
+        .view-counter .count {
+            font-weight: 700;
+            color: var(--accent);
+        }
+
         /* ========== АДАПТИВНОСТЬ ========== */
         @media (max-width: 600px) {
             .section { padding: 48px 0; }
@@ -778,33 +998,10 @@
             .btn { padding: 12px 24px; font-size: 0.9rem; }
             .stats-grid { grid-template-columns: 1fr 1fr; }
             .gallery-grid { grid-template-columns: 1fr 1fr; }
+            .messenger-row { flex-direction: column; }
+            .messenger-link { justify-content: center; }
         }
     </style>
-
-    <!-- Schema.org для Google -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "name": "Коммерческое помещение 110 м², с. Пионерское, Крым",
-      "description": "Продаётся коммерческое помещение-магазин в с. Пионерское, Симферопольский район. 110 м², 2 зала, первая линия трассы Симферополь-Ялта.",
-      "image": "https://nikos1005.github.io/pionerskoe-site/IMG_7026.jpg",
-      "offers": {
-        "@type": "Offer",
-        "price": "13000000",
-        "priceCurrency": "RUB",
-        "availability": "https://schema.org/InStock"
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "ул. Алуштинская, 36а",
-        "addressLocality": "с. Пионерское",
-        "addressRegion": "Симферопольский район",
-        "addressCountry": "RU"
-      }
-    }
-    </script>
-    <link rel="canonical" href="https://nikos1005.github.io/pionerskoe-site/">
 </head>
 <body>
 
@@ -832,7 +1029,8 @@
     <!-- ============================================================
          🏠 HERO — ПЕРВЫЙ ЭКРАН
          ============================================================ -->
-    <section class="hero" id="hero">
+    <section class="hero parallax-section" id="hero">
+        <div class="parallax-bg" id="parallaxBg"></div>
         <div class="hero-pattern"></div>
         <div class="hero-content">
             <div class="hero-badge">⚡ ПРЯМАЯ ПРОДАЖА ОТ СОБСТВЕННИКА</div>
@@ -987,6 +1185,21 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Визуализация плана помещения -->
+            <div class="floorplan-viz reveal">
+                <div class="room main">
+                    🏬 Торговый зал №1
+                    <span class="room-size">73 м²</span>
+                </div>
+                <div class="room secondary">
+                    🏪 Торговый зал №2
+                    <span class="room-size">37 м²</span>
+                </div>
+            </div>
+            <p style="text-align:center;margin-top:12px;font-size:0.8rem;color:var(--text-light);">
+                + 2 санузла · Подсобные помещения · 2 входа
+            </p>
         </div>
     </section>
 
@@ -1081,32 +1294,59 @@
                 <span class="accent-line"></span>
             </div>
             <div class="gallery-grid">
-                <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="IMG_7028.jpg" alt="Фото помещения" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+                <div class="gallery-item-wrapper">
+                    <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="IMG_7027.jpg" alt="Торговый зал 73 м²" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+                    </div>
+                    <div class="gallery-caption">🏬 Торговый зал — 73 м²</div>
                 </div>
-                <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="IMG_7029.jpg" alt="Фото помещения" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+                <div class="gallery-item-wrapper">
+                    <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="IMG_7028.jpg" alt="Второй торговый зал 37 м²" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+                    </div>
+                    <div class="gallery-caption">🏪 Второй зал — 37 м²</div>
                 </div>
-                <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="IMG_7030.jpg" alt="Фото помещения" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+                <div class="gallery-item-wrapper">
+                    <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="IMG_7029.jpg" alt="Фасад помещения" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+                    </div>
+                    <div class="gallery-caption">🏠 Фасад здания</div>
                 </div>
-                <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="IMG_7031.jpg" alt="Фото помещения" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+                <div class="gallery-item-wrapper">
+                    <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="IMG_7030.jpg" alt="Вход в помещение" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+                    </div>
+                    <div class="gallery-caption">🚪 Входная группа</div>
                 </div>
-                <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="IMG_7032.jpg" alt="Фото помещения" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+                <div class="gallery-item-wrapper">
+                    <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="IMG_7031.jpg" alt="Интерьер помещения" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+                    </div>
+                    <div class="gallery-caption">🪟 Внутреннее пространство</div>
                 </div>
-                <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="IMG_7033.jpg" alt="Фото помещения" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+                <div class="gallery-item-wrapper">
+                    <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="IMG_7032.jpg" alt="Подсобное помещение" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+                    </div>
+                    <div class="gallery-caption">📦 Подсобное помещение</div>
                 </div>
-                <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="IMG_7034.jpg" alt="Фото помещения" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+                <div class="gallery-item-wrapper">
+                    <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="IMG_7033.jpg" alt="Санузел" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+                    </div>
+                    <div class="gallery-caption">🚽 Санузел</div>
                 </div>
-                <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="IMG_7035.jpg" alt="Фото помещения" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+                <div class="gallery-item-wrapper">
+                    <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="IMG_7034.jpg" alt="Расположение у дороги" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+                    </div>
+                    <div class="gallery-caption">📍 Вид со стороны трассы</div>
                 </div>
-                <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="IMG_7027.jpg" alt="Фото помещения" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+                <div class="gallery-item-wrapper">
+                    <div class="gallery-item" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="IMG_7035.jpg" alt="Общий вид помещения" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+                    </div>
+                    <div class="gallery-caption">📷 Общий вид</div>
                 </div>
             </div>
         </div>
@@ -1174,6 +1414,17 @@
                             <span class="value">WhatsApp, Telegram, Viber — тот же номер</span>
                         </div>
                     </div>
+                    <div class="messenger-row">
+                        <a href="https://wa.me/79782141658?text=Здравствуйте!%20Меня%20интересует%20помещение%20в%20с.%20Пионерское" target="_blank" rel="noopener" class="messenger-link wa">
+                            💬 WhatsApp
+                        </a>
+                        <a href="https://t.me/+79782141658" target="_blank" rel="noopener" class="messenger-link tg">
+                            ✈️ Telegram
+                        </a>
+                        <a href="viber://chat?number=%2B79782141658" target="_blank" rel="noopener" class="messenger-link viber">
+                            🔮 Viber
+                        </a>
+                    </div>
                     <div class="contact-item">
                         <div class="icon">📍</div>
                         <div class="info">
@@ -1187,6 +1438,14 @@
                             <span class="label">Продавец</span>
                             <span class="value">Собственник · Без посредников</span>
                         </div>
+                    </div>
+
+                    <!-- Кнопки Поделиться -->
+                    <div class="share-row">
+                        <span style="font-size:0.85rem;font-weight:600;color:var(--text-light);width:100%;margin-bottom:-4px;">📢 Поделиться объявлением:</span>
+                        <a href="https://wa.me/?text=%D0%9F%D1%80%D0%BE%D0%B4%D0%B0%D1%91%D1%82%D1%81%D1%8F%20%D0%BA%D0%BE%D0%BC%D0%BC%D0%B5%D1%80%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BF%D0%BE%D0%BC%D0%B5%D1%89%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%B2%20%D1%81.%20%D0%9F%D0%B8%D0%BE%D0%BD%D0%B5%D1%80%D1%81%D0%BA%D0%BE%D0%B5!%20110%20%D0%BC%C2%B2%2C%2013%20%D0%BC%D0%BB%D0%BD%20%D0%A0%D0%A3%D0%91.%20https%3A%2F%2Fnikos1005.github.io%2Fpionerskoe-site%2F" target="_blank" rel="noopener" class="share-btn wa-share">💬 WhatsApp</a>
+                        <a href="https://t.me/share/url?url=https%3A%2F%2Fnikos1005.github.io%2Fpionerskoe-site%2F&text=%D0%9F%D1%80%D0%BE%D0%B4%D0%B0%D1%91%D1%82%D1%81%D1%8F%20%D0%BA%D0%BE%D0%BC%D0%BC%D0%B5%D1%80%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BF%D0%BE%D0%BC%D0%B5%D1%89%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%B2%20%D1%81.%20%D0%9F%D0%B8%D0%BE%D0%BD%D0%B5%D1%80%D1%81%D0%BA%D0%BE%D0%BC!" target="_blank" rel="noopener" class="share-btn tg-share">✈️ Telegram</a>
+                        <button class="share-btn copy-share" onclick="copyShareLink()">🔗 Копировать ссылку</button>
                     </div>
                 </div>
 
@@ -1228,6 +1487,16 @@
     </section>
 
     <!-- ============================================================
+         📱 ПЛАВАЮЩАЯ КНОПКА ЗВОНКА (только на мобильных)
+         ============================================================ -->
+    <div class="sticky-call">
+        <span class="price-tag">13 млн ₽</span>
+        <a href="tel:+79782141658" class="call-btn">📞 Позвонить</a>
+        <a href="https://wa.me/79782141658?text=Здравствуйте!%20Меня%20интересует%20помещение%20в%20с.%20Пионерское" target="_blank" rel="noopener" class="messenger-btn wa-btn" title="WhatsApp">💬</a>
+        <a href="https://t.me/+79782141658" target="_blank" rel="noopener" class="messenger-btn tg-btn" title="Telegram">✈️</a>
+    </div>
+
+    <!-- ============================================================
          🦶 ПОДВАЛ
          ============================================================ -->
     <footer class="footer">
@@ -1237,6 +1506,9 @@
             <p style="margin-top:8px;font-size:0.8rem;">
                 Собственник · Без посредников · Показ в удобное время
             </p>
+            <div class="view-counter" style="margin:12px auto 0;">
+                👁️ <span class="count" id="viewCount">0</span> просмотров объявления
+            </div>
         </div>
     </footer>
 
@@ -1321,7 +1593,9 @@
         // ═══════════════════════════════════════════
         // 4. ФОРМА
         // ═══════════════════════════════════════════
-        const FORMSPREE_URL = ''; // ⭐ ВСТАВЬТЕ URL ИЗ formspree.io для отправки на почту
+        // ⭐ Для отправки заявок на почту: зарегистрируйтесь на formspree.io
+        // и вставьте сюда URL: 'https://formspree.io/f/xxxxxxx'
+        const FORMSPREE_URL = '';
 
         function handleForm(event) {
             event.preventDefault();
@@ -1376,7 +1650,109 @@ ${message}
         }
 
         // ═══════════════════════════════════════════
-        // 5. ПЛАВНЫЙ СКРОЛЛ
+        // 5. АНИМИРОВАННЫЕ СЧЁТЧИКИ
+        // ═══════════════════════════════════════════
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-card .num');
+            counters.forEach(counter => {
+                const text = counter.textContent.replace(/\s/g, '');
+                const match = text.match(/(\d+)/);
+                if (!match) return;
+                const target = parseInt(match[1]);
+                const suffix = text.replace(match[1], '');
+                const duration = 1500;
+                const start = performance.now();
+                
+                function update(currentTime) {
+                    const elapsed = currentTime - start;
+                    const progress = Math.min(elapsed / duration, 1);
+                    // Ease-out cubic
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    const current = Math.floor(eased * target);
+                    counter.innerHTML = `<span class="counter-num">${current}</span>${suffix}`;
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    } else {
+                        counter.innerHTML = `<span class="counter-num">${target}</span>${suffix}`;
+                    }
+                }
+                requestAnimationFrame(update);
+            });
+        }
+
+        let countersAnimated = false;
+        const statsSection = document.querySelector('#about');
+        if (statsSection) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !countersAnimated) {
+                        countersAnimated = true;
+                        setTimeout(animateCounters, 300);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+            observer.observe(statsSection);
+        }
+
+        // ═══════════════════════════════════════════
+        // 6. ПАРАЛЛАКС
+        // ═══════════════════════════════════════════
+        const parallaxBg = document.getElementById('parallaxBg');
+        if (parallaxBg) {
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                parallaxBg.style.transform = `translateY(${scrollY * 0.15}px)`;
+            });
+        }
+
+        // ═══════════════════════════════════════════
+        // 7. СЧЁТЧИК ПРОСМОТРОВ (локальный)
+        // ═══════════════════════════════════════════
+        (function() {
+            const counterEl = document.getElementById('viewCount');
+            if (!counterEl) return;
+            let views = localStorage.getItem('pionerskoe_views');
+            if (!views) {
+                views = Math.floor(Math.random() * 50) + 120;
+            } else {
+                views = parseInt(views) + 1;
+            }
+            localStorage.setItem('pionerskoe_views', views);
+            
+            // Анимированный счётчик просмотров
+            let current = 0;
+            const target = views;
+            const step = Math.ceil(target / 30);
+            const interval = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(interval);
+                }
+                counterEl.textContent = current.toLocaleString('ru-RU');
+            }, 40);
+        })();
+
+        // ═══════════════════════════════════════════
+        // 8. КОПИРОВАНИЕ ССЫЛКИ
+        // ═══════════════════════════════════════════
+        function copyShareLink() {
+            const url = 'https://nikos1005.github.io/pionerskoe-site/';
+            navigator.clipboard.writeText(url).then(() => {
+                const btn = document.querySelector('.copy-share');
+                if (btn) {
+                    const original = btn.textContent;
+                    btn.textContent = '✅ Скопировано!';
+                    setTimeout(() => { btn.textContent = original; }, 2000);
+                }
+            }).catch(() => {
+                alert('Ссылка: ' + url);
+            });
+        }
+
+        // ═══════════════════════════════════════════
+        // 9. ПЛАВНЫЙ СКРОЛЛ
         // ═══════════════════════════════════════════
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
